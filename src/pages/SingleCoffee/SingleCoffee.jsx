@@ -1,9 +1,10 @@
 import React from 'react';
 import { FaEye, FaPen, FaTrash } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const SingleCoffee = ({ coffee, coffees, setCoffees }) => {
-    console.log(coffee);
+    // console.log(coffee);
     const { _id, category, chef, details, name, photo, suppliers, test } = coffee;
 
     const handleCoffeeDelete = (_id) => {
@@ -59,8 +60,16 @@ const SingleCoffee = ({ coffee, coffees, setCoffees }) => {
 
             {/* <div className="btn-group btn-group-vertical space-y-4 pl-12"> */}
             <div className="flex flex-col  space-y-4 mr-3 ml-3 ">
+                {/* show */}
                 <button className="btn bg-[#D2B48C] border-0  mx-auto"><FaEye /></button>
-                <button className="btn mx-auto rounded"><FaPen /></button>
+                {/* update */}
+                <Link to={`/updateCoffee/${_id}`}>
+                    <button className="btn mx-auto rounded">
+                        <FaPen />
+                    </button>
+
+                </Link>
+                {/* delete */}
                 <button onClick={() => handleCoffeeDelete(_id)} className="btn bg-red-700  mx-auto border-0">
 
                     <FaTrash />
