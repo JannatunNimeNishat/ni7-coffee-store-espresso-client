@@ -3,6 +3,7 @@ import bg from '../../assets/images/more/11.png'
 import { FaArrowLeft } from "react-icons/fa";
 import { useFormik } from 'formik';
 import Swal from 'sweetalert2'
+import { Link } from 'react-router-dom';
 const initialValues = {
     name: '',
     chef: '',
@@ -18,7 +19,7 @@ const AddCoffee = () => {
 
     const { values, error, handleBlur, handleChange, handleSubmit } = useFormik({
         initialValues: initialValues,
-        onSubmit: (values,action) => {
+        onSubmit: (values, action) => {
             const name = values.name;
             const chef = values.chef;
             const supplier = values.supplier;
@@ -51,7 +52,7 @@ const AddCoffee = () => {
                     }
                 })
 
-                action.resetForm();
+            action.resetForm();
         }
     })
 
@@ -69,9 +70,11 @@ const AddCoffee = () => {
 
         >
             <div className='my-container pt-5 mb-3'>
-                <p className='flex items-center gap-3 mb-5'>
-                    <FaArrowLeft /> Back to home
-                </p>
+                <Link to='/'>
+                    <p className='flex items-center gap-3 mb-5'>
+                        <FaArrowLeft /> Back to home
+                    </p>
+                </Link>
                 <div className='bg-[#F4F3F0] pt-3 px-5 py-5 '>
                     <div className='px-20 text-center'>
                         <h3 className='text-3xl mt-5'>Add New Coffee</h3>
